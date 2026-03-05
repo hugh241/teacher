@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-jiedan</title>
+    <defs>
+        <linearGradient x1="26.113706%" y1="8.73378517%" x2="71.2995914%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#48AEFF" offset="0%"></stop>
+            <stop stop-color="#A2DAFE" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页备份-3" transform="translate(-1283.000000, -857.000000)">
+            <g id="icon-jiedan" transform="translate(1283.000000, 857.000000)">
+                <g id="编组-20" fill="url(#linearGradient-1)">
+                    <rect id="矩形" x="0" y="0" width="76" height="76" rx="27"></rect>
+                </g>
+                <g id="yijiedan" transform="translate(24.000000, 20.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M19.3333333,36 L2.41666668,36 C1.0820625,36 0,34.9254 0,33.6 L0,2.40000001 C0,1.0746 1.0820625,0 2.41666668,0 L26.5833333,0 C27.9179375,0 29,1.0746 29,2.40000001 L29,27 L19.3333333,27 L19.3333333,36 Z M17,7 L4,7 L4,9 L17,9 L17,7 Z M25,13 L5,13 L5,15 L25,15 L25,13 Z M25,23 L25,21 L5,21 L5,23 L25,23 Z M21,36 L21,29 L29,29 L21,36 Z" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

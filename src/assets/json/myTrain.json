@@ -1,0 +1,26 @@
+{
+  "returnCode": "200",
+  "returnMessage": "成功",
+  "returnData": [{
+    "studyedCount": 113606,
+    "courseName": "AI助教天府大讲堂",
+    "level": "0",
+    "endDate": "2026-12-31",
+    "subsectionCount": 2,
+    "filePath": "https://cdnbasic.scbdc.edu.cn/大讲堂封面图.png",
+    "id": "1983474287572594688",
+    "startDate": "2025-10-30",
+    "fileId": "1983474230114824192"
+  }, {
+    "studyedCount": 201847,
+    "courseName": "全员普及培训",
+    "level": "0",
+    "endDate": "2026-12-30",
+    "subsectionCount": 32,
+    "filePath": "https://cdnbasic.scbdc.edu.cn/全员普及培训.jpg",
+    "id": "1983723370145034240",
+    "startDate": "2025-10-31",
+    "fileId": "1983723344928878592"
+  }],
+  "returnCount": 2
+}

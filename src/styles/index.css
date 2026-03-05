@@ -1,0 +1,60 @@
+/*
+公共样式命名：
+  flex_R:{  水平排列
+     _A:justify-content:space-around;
+    _C:justify-content: center;
+    _B:justify-content: space-between;
+    _E:justify-content: space-evenly
+  }
+  pad_LR_30:padding左右30px 各页面wrap类名
+ */
+ .flex_R{
+  display: flex;
+  align-items: center;
+ }
+ .flex_R_A{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+ }
+ .flex_R_C{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ .flex_R_B{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
+ .flex_R_E{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+ }
+ .flex_C_C{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+ }
+ .pad_LR_30{
+  padding: 0 30px;
+ }
+
+/* .el-popover {
+  box-sizing: border-box !important;
+} */
+
+/* 针对特定 popover 的增强 */
+.drops.el-popover {
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  &,
+  & * {
+    box-sizing: border-box !important;
+  }
+  .popper__arrow {
+    display: none !important;
+  }
+}

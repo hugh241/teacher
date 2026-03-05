@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="66px" height="66px" viewBox="0 0 66 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 19</title>
+    <defs>
+        <linearGradient x1="26.113706%" y1="8.73378517%" x2="71.2995914%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#40ACFF" offset="0%"></stop>
+            <stop stop-color="#7DCDFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页备份-3" transform="translate(-66.000000, -434.000000)">
+            <g id="编组-19" transform="translate(66.000000, 434.000000)">
+                <circle id="椭圆形" fill="url(#linearGradient-1)" cx="33" cy="33" r="33"></circle>
+                <g id="gongsi" transform="translate(15.000000, 15.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M0,3.5 L0,35 L22.75,35 L22.75,3.5 L17.5,0 L0,3.5 Z M13.125,31.15 L2.625,31.15 L2.625,28 L13.125,27.825 L13.125,31.15 Z M13.125,24.15 L2.625,24.325 L2.625,21.175 L13.125,20.475 L13.125,24.15 Z M13.125,16.625 L2.625,17.325 L2.625,14.175 L13.125,12.95 L13.125,16.625 Z M13.125,8.925 L2.625,10.325 L2.625,7 L13.125,4.9 L13.125,8.925 Z M31.5,31.5 L31.5,3.5 L26.25,0 L23.625,0 L26.25,1.75 L26.25,35 L35,35 L35,31.5 L31.5,31.5 Z" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

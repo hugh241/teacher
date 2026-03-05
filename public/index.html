@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<script>
+    //正式统计
+    var _paq = (window._paq = window._paq || []);
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    (function () {
+        var u = "https://basic.sc.smartedu.cn/bsservice/";
+        // var u="http://192.168.1.12:8083/"
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        // _paq.push(['setSiteId', '5']);
+        _paq.push(["setSiteId", "4"]);
+        var d = document,
+            g = d.createElement("script"),
+            s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src =
+            "https://cdnbasic.scbdc.edu.cn/%E5%9B%9B%E5%B7%9D%E7%9C%81%E4%B8%AD%E5%B0%8F%E5%AD%A6%E8%AF%BE%E5%90%8E%E6%9C%8D%E5%8A%A1%E5%B9%B3%E5%8F%B0/KHFW/js/matomo.js";
+        s.parentNode.insertBefore(g, s);
+    })();
+</script>
+<!-- 滚动条优化 -->
+<style>
+  html {
+  height: 100%;
+  background-color: #eef0f7
+}
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+  }
+  ::-webkit-scrollbar-button {
+    background-color: #eef0f7;
+  }
+  ::-webkit-scrollbar-track {
+    background: #eef0f7;
+  }
+  ::-webkit-scrollbar-track-piece {
+    background: #eef0f7;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #a3c2f0;
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-corner {
+    background: #eef0f7;
+  }
+  ::-webkit-scrollbar-resizer {
+    background: #eef0f7;
+  }
+  </style>

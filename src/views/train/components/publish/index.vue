@@ -31,22 +31,22 @@ export default {
           id: 'setInfo',
           name: '第一步:填写基本信息',
         },
-        {
-          id: 'setSubmit',
-          name: '第二步:提交任务要求设置',
-        },
-        {
-          id: 'setChapter',
-          name: '第三步:设置章节',
-        },
+        // {
+        //   id: 'setSubmit',
+        //   name: '第二步:提交任务要求设置',
+        // },
+        // {
+        //   id: 'setChapter',
+        //   name: '第三步:设置章节',
+        // },
         {
           id: 'setTopic',
-          name: '第四步:设置答题',
+          name: '第二步:设置答题',
         },
-        {
-          id: 'setCertificate',
-          name: '证书颁发设置',
-        },
+        // {
+        //   id: 'setCertificate',
+        //   name: '证书颁发设置',
+        // },
       ],
     }
   },

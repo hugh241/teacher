@@ -1,54 +1,29 @@
 <!--设置答题  -->
 <template>
   <div class="container">
+    <BreadCrumb :type="1" />
     <questionsDetail v-if="questionsTag" :courseId="topic.courseId" :paperId="topic.paperId" @backList="backList" />
-    <questionsDetail2 v-if="questionsTag2" :courseId="topic.courseId" :paperId="topic.paperId" @backList="backList" />
     <createQuestion v-else-if="createTag" :courseId="topic.courseId" :paperId="topic.paperId" @backList="backList" />
 
-    <div v-else class="container_box">
+    <div v-else class="container_box" style="width: 1200px;margin: 0 auto;">
       <div class="con_center">
-        <div class="soat">
-          <div class="jspx_titbar">
-            <span style="fontsize: 16px; fontweight: 500">设置试卷列表</span>
-          </div>
-          <div class="soat_right">
-            <el-button type="primary" icon="el-icon-plus" size="small" @click="addClick()">创建试卷</el-button>
-          </div>
-        </div>
 
         <Tabble :handList="handList" :tabbleList="tableList" :tableData="tableData">
           <template #edit="scope">
-            <el-button type="text" @click="updateClick(scope.row)">修改</el-button>
-            <el-button type="text" @click="infoClick(scope.row)">查看题目</el-button>
-            <el-button type="text" @click="setClick(scope.row)" v-if="scope.row.state == '停用'">设置题目</el-button>
-            <el-button type="text" @click="scope.row.state == '停用' ? startPaper(scope.row) : stopPaper(scope.row)"
-              :class="scope.row.state == '停用' ? 'color2' : 'color1'">{{ scope.row.state == '停用' ? '启用' : '停用'
-              }}</el-button>
-            <el-button type="text" @click="deleteListClick(scope.row)" style="color: #e47471">删除</el-button>
-            <el-button type="text" @click="cuotiClick(scope.row)">错题率</el-button>
+            <el-button @click="cuotiJi(scope.row)" type="primary" size="large">错题集</el-button>
+            <el-button @click="reexamine(scope.row)" type="primary" size="large">参加考试</el-button>
           </template>
-          <!-- <template slot="Pagination">
-                        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                            :current-page="listParams.pageNum" :page-sizes="[5, 10, 20, 30]"
-                            :page-size="listParams.pageSize" layout="total, sizes, prev, pager, next, jumper"
-                            :total="total"></el-pagination>
-                    </template> -->
         </Tabble>
         <div class="pagination flex_R_C">
           <Pagination :total="total" @handlePageChange="handlePageChange"></Pagination>
         </div>
-        <!-- <div class="btn_caozuo" v-if="!editTag">
-          <el-button type="primary" @click="prevFun">上一步</el-button>
-          <el-button type="primary" @click="nextFun()">下一步</el-button>
-        </div> -->
-        <paperAdd ref="paperAddRef" :courseId="courseId" v-on:addSubmitListener="getList" />
       </div>
     </div>
   </div>
 </template>
 <script>
 import {
-  getPaperPerList,
+  getPaperPerList2,
   deletePaperPer,
   getStudyCourseList,
   getChapterList,
@@ -59,14 +34,13 @@ import {
 } from '@/api/learningCenter'
 import { deleteQuestionV3 } from '@/api/admin.js'
 export default {
-  props: ['courseId', 'editTag'],
+  props: ['editTag'],
   components: {
-    paperAdd: () => import('./paperAdd.vue'),
     Tabble: () => import('@/components/tabble/index.vue'),
     Pagination: () => import('@/components/pagination/index.vue'),
     questionsDetail: () => import('@/views/train/topic/questionsDetail.vue'), //查看题目
     createQuestion: () => import('@/views/train/topic/createQuestion.vue'), //设置题目
-    questionsDetail2: () => import('@/views/train/topic/questionsDetail2.vue'), //查看题目
+    BreadCrumb : () => import('@/components/Breadcrumb/index.vue'),
   },
   data() {
     return {
@@ -75,7 +49,6 @@ export default {
         paperId: '',
       },
       questionsTag: false,
-      questionsTag2: false,
       createTag: false,
       settingId: '',
       addwidth: '65%',
@@ -108,8 +81,8 @@ export default {
         },
         {
           type: '',
-          props: 'level',
-          label: '试卷层次',
+          props: 'type',
+          label: '试卷类型',
           filters: '',
           sortable: false,
           fixed: false,
@@ -117,8 +90,8 @@ export default {
         },
         {
           type: '',
-          props: 'type',
-          label: '试卷类型',
+          props: 'paperScore',
+          label: '最高分数',
           filters: '',
           sortable: false,
           fixed: false,
@@ -141,15 +114,6 @@ export default {
           fixed: false,
         },
         {
-          type: '',
-          props: 'state',
-          label: '状态',
-          filters: '',
-          sortable: false,
-          fixed: false,
-          width:'100'
-        },
-        {
           type: 'custom',
           label: '操作',
           custom: 'edit',
@@ -161,7 +125,9 @@ export default {
       chapterInfo: {},
     }
   },
-
+  created() {
+    this.courseId = this.$route.query.courseId
+  },
   mounted() {
     this.$nextTick(() => {
       console.log('this.courseId')
@@ -173,6 +139,7 @@ export default {
         this.courseInfo = res.returnData
       }
     })
+    this.topic.courseId = this.courseId;
 
     this.getList()
   },
@@ -223,7 +190,7 @@ export default {
         pageNo: this.listParams.pageNum,
         pageSize: this.listParams.pageSize,
       }
-      let res = await getPaperPerList(data)
+      let res = await getPaperPerList2(data)
       if (res.returnCode == 200) {
         for (let item of res.returnData) {
           item.state = item.state == '0' ? '停用' : item.state == '1' ? '无效 ' : item.state == '2' ? '启用' : '停用'
@@ -272,17 +239,19 @@ export default {
         }
       })
 
+
+
+      // setTimeout(() => {
+      //   this.$refs.paperAddRef.choseLevel(level1)
+      // }, 500)
+
     },
+
     // 查看题目
     infoClick(row) {
       this.topic.paperId = row.id
       this.topic.courseId = row.courseId
       this.questionsTag = true
-    },
-    cuotiClick(row) {
-      this.topic.paperId = row.id
-      this.topic.courseId = row.courseId
-      this.questionsTag2 = true
     },
     // 设置题目
     setClick(row) {
@@ -296,7 +265,6 @@ export default {
       this.topic.courseId = ''
       this.createTag = false
       this.questionsTag = false
-      this.questionsTag2 = false
     },
     //启用试卷
     startPaper(row) {
@@ -409,6 +377,22 @@ export default {
     nextFun() {
       this.$emit('nextFun')
     },
+    reexamine(item) {
+      this.$router.push({
+        path: 'examination',
+        query: {
+          examId: item.id,
+        },
+      })
+    },
+    cuotiJi(item) {
+      this.$router.push({
+        path: 'answerRecordDetail',
+        query: {
+          examId: item.id,
+        },
+      })
+    }
   },
 }
 </script>

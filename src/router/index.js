@@ -106,6 +106,28 @@ export const constantRoutes = [{
         },
       },
       {
+        path: '/topicList',
+        component: () => import('@/views/home/topicList'),
+        name: 'topicList',
+        hidden: true,
+        meta: {
+          title: '首页',
+          name: '试卷列表',
+          path: "/home"
+        },
+      },
+      {
+        path: '/answerRecordDetail',
+        component: () => import('@/views/home/answerRecordDetail'),
+        name: 'answerRecordDetail',
+        hidden: true,
+        meta: {
+          title: '首页',
+          name: '错题集',
+          path: "/home"
+        },
+      },
+      {
         path: '/examination',
         component: () => import('@/views/home/Examination'),
         name: 'examination',
@@ -117,14 +139,14 @@ export const constantRoutes = [{
         },
       },
       {
-        // 培训管理
+        // 测试管理
         path: '/train',
         hidden: true,
         component: () => import('@/views/train/index.vue'),
         name: 'train',
         redirect: "/list",
         meta: {
-          title: '培训管理',
+          title: '测试管理',
           name: '培训任务列表',
           path: "/train"
         },
@@ -135,20 +157,20 @@ export const constantRoutes = [{
             component: () => import('@/views/train/components/list/index.vue'),
             name: 'list',
             meta: {
-              title: '培训管理',
+              title: '测试管理',
               name: '培训任务列表',
               path: "/train"
             },
           },
           {
-            // 培训管理详情
+            // 测试管理详情
             path: '/admin',
             hidden: true,
             component: () => import('@/views/train/components/admin/index.vue'),
             name: 'admin',
             meta: {
-              title: '培训管理',
-              name: '培训管理详情',
+              title: '测试管理',
+              name: '测试管理详情',
               path: "/train"
             },
           },
@@ -158,7 +180,7 @@ export const constantRoutes = [{
             hidden: true,
             component: () => import('@/views/train/components/publish/index.vue'),
             meta: {
-              title: '培训管理',
+              title: '测试管理',
               name: '发布任务',
               path: "/train"
             },
@@ -170,7 +192,7 @@ export const constantRoutes = [{
             name:'trainSum',
             component: () => import('@/views/train/components/trainSum/index.vue'),
             meta: {
-              title: '培训管理',
+              title: '测试管理',
               name: '参训记录',
               path: "/train"
             },
@@ -294,7 +316,7 @@ export function filterAsyncRoutes(menuList) {
 const createRouter = () =>
   new Router({
     mode: 'history',
-    base: process.env.VUE_APP_IS_PROD == '0' ? '/hd/teacherTraining/' : '/hd/teacherTraining/',
+    base: process.env.VUE_APP_IS_PROD == '0' ? '/' : '/hd/teacherTraining/',
     scrollBehavior: () => ({
       y: 0
     }),

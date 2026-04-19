@@ -181,6 +181,13 @@ export function getPaperPerList(param) {
     params: param
   })
 }
+export function getPaperPerList2(param) {
+  return request({
+    url: '/paperPer/getPaperPerList2',
+    method: 'post',
+    params: param
+  })
+}
 export function editPaperPer(param) {
   return request({
     url: '/paperPer/editPaperPer',
@@ -206,6 +213,13 @@ export function deletePaperPer(param) {
 export function getPaperInfo(param) {
   return request({
     url: '/paperPer/getPaperInfo',
+    method: 'post',
+    data: param
+  })
+}
+export function getAnswerRecordDetail3(param) {
+  return request({
+    url: '/paperUserRecord/getAnswerRecordDetail3',
     method: 'post',
     data: param
   })
@@ -299,6 +313,13 @@ export function getRecordList(param) {
 export function getAnswerRecordDetail(param) {
   return request({
     url: '/paperUserRecord/getAnswerRecordDetail',
+    method: 'post',
+    data: param
+  })
+}
+export function getAnswerRecordDetail2(param) {
+  return request({
+    url: '/paperUserRecord/getAnswerRecordDetail2',
     method: 'post',
     data: param
   })

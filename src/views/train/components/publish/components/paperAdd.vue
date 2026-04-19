@@ -3,15 +3,21 @@
     <el-dialog :title="title" :visible.sync="addDisplay" width="60%" @close="visibleChange">
       <el-form :model="addForm" :rules="formRules" style="width: 90%;margin:auto" ref="addForm" label-position="right"
         label-width="100px">
-        <el-row>
+        <!-- <el-row>
           <el-col :span="24">
             <el-form-item label="试卷名称" prop="perName">
               <el-input placeholder="请输入试卷名称" v-model="addForm.perName" :maxlength="30" size="large"
                 show-word-limit></el-input>
             </el-form-item>
           </el-col>
-        </el-row>
+        </el-row> -->
         <el-row>
+          <el-col :span="12">
+            <el-form-item label="试卷名称" prop="perName">
+              <el-input placeholder="请输入试卷名称" v-model="addForm.perName" :maxlength="30" size="large"
+                show-word-limit></el-input>
+            </el-form-item>
+          </el-col>
           <el-col :span="12">
             <el-form-item label="试卷类型" prop="type">
               <el-select style="width:100%" v-model="addForm.type" placeholder="请选择试卷类型" @change="choseType" size="large">
@@ -20,7 +26,7 @@
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="12">
+          <!-- <el-col :span="12">
             <el-form-item label="试卷层次" prop="level">
               <el-select style="width:100%" v-model="addForm.level" placeholder="请选择试卷层次" @change="choseLevel"
                 size="large">
@@ -28,10 +34,10 @@
                   item.label }}</el-option>
               </el-select>
             </el-form-item>
-          </el-col>
+          </el-col> -->
 
         </el-row>
-        <el-row>
+        <!-- <el-row>
           <el-col :span="12">
             <el-form-item label="所属课程" prop="courseId">
               <el-select style="width:100%" v-model="addForm.courseId" disabled placeholder="请选择所属课程" size="large">
@@ -48,7 +54,7 @@
               </el-select>
             </el-form-item>
           </el-col>
-        </el-row>
+        </el-row> -->
 
         <el-row>
           <el-col :span="12">
@@ -136,10 +142,6 @@ export default {
         {
           value: '2',
           label: '考试'
-        },
-        {
-          value: '4',
-          label: '问卷'
         }
       ],
       addForm: {

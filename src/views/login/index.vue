@@ -19,7 +19,7 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
-          placeholder="Username"
+          placeholder="请输入"
           name="username"
           type="text"
           tabindex="1"
@@ -35,7 +35,7 @@
           ref="password"
           v-model="loginForm.password"
           :type="passwordType"
-          placeholder="Password"
+          placeholder="请输入"
           name="password"
           tabindex="2"
           @keyup.native="checkCapslock"
@@ -48,7 +48,7 @@
           />
         </span>
       </el-form-item>
-      <el-form-item prop="code">
+      <!-- <el-form-item prop="code">
         <span class="svg-container">
           <svg-icon icon-class="code" />
         </span>
@@ -61,7 +61,7 @@
         <span class="show-code" @click="getCode">
           <img :src="`data:image/png;base64,` + loginForm.codeImg" alt="" />
         </span>
-      </el-form-item>
+      </el-form-item> -->
       <!-- </el-tooltip> -->
 
       <el-button
@@ -69,7 +69,7 @@
         type="primary"
         style="width: 100%; margin-bottom: 30px"
         @click.native.prevent="handleLogin"
-        >Login</el-button
+        >登录</el-button
       >
     </el-form>
   </div>
@@ -102,7 +102,7 @@ export default {
         password: [
           { required: true, trigger: "change", validator: validatePassword },
         ],
-        code: [{ required: true, message: "请输入验证码", trigger: "blur" }],
+        // code: [{ required: true, message: "请输入验证码", trigger: "blur" }],
       },
       passwordType: "password",
       capsTooltip: false,
@@ -116,7 +116,7 @@ export default {
 
   },
   mounted() {
-    this.getCode();
+    // this.getCode();
     if (this.loginForm.username === "") {
       this.$refs.username.focus();
     } else if (this.loginForm.password === "") {
@@ -156,10 +156,12 @@ export default {
           this.loading = true;
           const { username, password, code, uuid } = this.loginForm;
           let data = {
-            username: Encrypt(username.trim()),
-            password: Encrypt(password.trim()),
-            captcha: code,
-            uuid,
+            // username: Encrypt(username.trim()),
+            // password: Encrypt(password.trim()),
+            // captcha: code,
+            // uuid,
+            userName: username.trim(),
+            password: password.trim(),
           };
 
           login(data).then((res) => {
@@ -172,7 +174,7 @@ export default {
                 }
               });
             } else {
-              this.getCode();
+              // this.getCode();
               this.$message({ message: res.returnMessage, type: "error" });
             }
           });

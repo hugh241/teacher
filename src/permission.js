@@ -17,7 +17,7 @@ NProgress.configure({
   showSpinner: false
 })
 
-const whiteList = ['/index', '/noPermission', '/home']
+const whiteList = ['/index', '/noPermission', '/home', '/login']
 
 // 新增：统一的跳转方法
 const redirectToLogin = async () => {

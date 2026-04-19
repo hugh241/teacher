@@ -2,43 +2,52 @@
 <template>
   <div class="home_wrap">
     <Header></Header>
-    <div class="carousel">
+    <!-- <div class="carousel"> -->
       <!-- 轮播图 -->
-      <el-carousel autoplay v-model="currentIndex" loop>
-        <el-carousel-item>
+      <!-- <el-carousel autoplay v-model="currentIndex" loop> -->
+        <!-- <el-carousel-item>
           <div class="demo-carousel">
             <img src="@/assets/images/learningCenter/ban.png" alt="" />
           </div>
-        </el-carousel-item>
-        <el-carousel-item>
+        </el-carousel-item> -->
+        <!-- <el-carousel-item>
           <div class="demo-carousel">
             <img src="@/assets/images/learningCenter/banner1.png" alt="" />
           </div>
-        </el-carousel-item>
+        </el-carousel-item> -->
         <!-- <el-carousel-item v-for="(item, index) in bannerList" :key="index">
           <div class="demo-carousel">
             <img style="width: 100%; height: 100%" :src="item" alt="" />
           </div>
         </el-carousel-item> -->
-      </el-carousel>
-    </div>
+      <!-- </el-carousel>
+    </div> -->
     <!-- <div class="home" v-if="$process.VUE_APP_ALL_PROVINCE == '1'"> -->
     <div class="home">
       <!-- 1 -->
       <!-- 省级培训： -->
       <!-- <div class="selectBtn" v-if="$process.VUE_APP_ALL_PROVINCE == '1'"> -->
-      <div class="selectBtn">
+      <!-- <div class="selectBtn">
         <div class="button-left">
-          <!-- <div class="danyi">省级培训：</div> -->
+          <div class="danyi">省级培训：</div>
           <SelectBtn
             :buttonName="buttonName2"
             @handleBtn="handleBtnTwo1"
           ></SelectBtn>
         </div>
-<!--        <div class="button-right" @click="goMore1">-->
-<!--          <li class="more">查看更多</li>-->
-<!--        </div>-->
-      </div>
+       <div class="button-right" @click="goMore1">
+         <li class="more">查看更多</li>
+       </div>
+      </div> -->
+    <div class="flex_R_B" style="margin: 8px 8px;">
+      <!-- <p class="trainList_title">培训任务</p> -->
+      <el-button
+        type="primary"
+        icon="el-icon-plus"
+        @click="$router.push('/publish')">
+        发布任务
+      </el-button>
+    </div>
       <!-- 课程列表 -->
       <!-- <CourseList
         v-if="$process.VUE_APP_ALL_PROVINCE == '1'"
@@ -185,10 +194,10 @@
         element-loading-spinner="el-icon-loading"
       />
     </div> -->
-    <div class="tip" @click="openBook">
+    <!-- <div class="tip" @click="openBook">
       <img src="@/assets/img/base/icon_cz.png">
       <p>注册账号</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -201,7 +210,6 @@ import { mapGetters } from "vuex";
 import Header from "@/components/header/index";
 import { logoutUrl } from "@/api/user";
 import homeList from "@/assets/json/homeLis.json";
-
 export default {
   components: {
     CourseList,
@@ -458,8 +466,8 @@ export default {
       this.loading1 = true;
       this.payload0.state = 0;
       //初始化加载本地json
-      let res = homeList
-      //var res = await service.getTrainList(this.payload0);
+      // let res = homeList
+      var res = await service.getTrainList(this.payload0);
       if (res.returnCode == 200) {
         this.loading1 = false;
         this.listData0 = res.returnData;

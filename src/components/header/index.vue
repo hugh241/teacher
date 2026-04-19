@@ -119,7 +119,7 @@
                     alt=""
                     style="width: 20px; height: 20px; margin-right: 3px"
                   />
-                  培训管理
+                  测试管理
                 </div>
                 <div @click="goMyTrain">
                   <img
@@ -194,7 +194,7 @@ export default {
         },
         {
           icon: require("@/assets/images/header/head_train.png"),
-          menuname: "培训管理",
+          menuname: "测试管理",
           url: "/train",
         },
         // {
@@ -210,14 +210,14 @@ export default {
       ],
       fullMenuList: [
         { name: "首页", link: "/home", roleCodes: ['1001','1002','1003'] },
-        { name: "培训管理", link: "/train", roleCodes: ['1001'] },
+        { name: "测试管理", link: "/train", roleCodes: ['1001'] },
         { name: "我的培训", link: "/myTrain", roleCodes: ['1001','1002','1003'] },
         { name: "培训统计", link: "/trainingStatistics", roleCodes: ['1001'] },
         { name: "学校人员培训情况", link: "/staffTraining", roleCodes: ['1002'] },
       ],
       fullMenuListNO: [
         { name: "首页", link: "/home" },
-        { name: "培训管理", link: "/train" },
+        { name: "测试管理", link: "/train" },
         { name: "我的培训", link: "/myTrain" },
       ],
     };
@@ -239,24 +239,25 @@ export default {
       // 根据角色代码返回对应菜单
       // 1001 区域管理员   1002 学校管理员， 1003 普通教师
       switch (roleCode) {
-        case '1001': // 区域管理员：首页、我的培训、培训管理、培训统计
+        case '1001': // 区域管理员：首页、我的培训、测试管理、培训统计
           return [
             { name: "首页", link: "/home" },
-            { name: "我的培训", link: "/myTrain" },
-            { name: "培训管理", link: "/train" },
-            { name: "培训统计", link: "/trainingStatistics" }
+            // { name: "我的培训", link: "/myTrain" },
+            // { name: "测试管理", link: "/train" },
+            // { name: "培训统计", link: "/trainingStatistics" }
           ];
         case '1002': // 学校管理员：首页、我的培训、培训人员情况
           return [
             { name: "首页", link: "/home" },
-            { name: "我的培训", link: "/myTrain" },
-              { name: "培训管理", link: "/train" },
-            { name: "学校人员培训情况", link: "/staffTraining" }
+            // { name: "我的培训", link: "/myTrain" },
+            //   { name: "测试管理", link: "/train" },
+            // { name: "学校人员培训情况", link: "/staffTraining" },
+            // { name: "考练中心", link: "/examinationCenter" }
           ];
         case '1003': // 普通教师：首页、我的培训
           return [
             { name: "首页", link: "/home" },
-            { name: "我的培训", link: "/myTrain" }
+            // { name: "我的培训", link: "/myTrain" }
           ];
         default:
           // 默认只显示首页
@@ -272,13 +273,15 @@ export default {
       //测试环境需动态获取
       try {
         // 调用接口获取登录URL
-        const res = await logoutUrl();
-        if (res.returnCode === "200" && res.returnData) {
-          // 跳转到登录页面
-          window.location.href = res.returnData;
-        } else {
-          this.$message.error(res.returnMessage || "获取登录地址失败");
-        }
+        // const res = await logoutUrl();
+        // if (res.returnCode === "200" && res.returnData) {
+        //   // 跳转到登录页面
+        //   window.location.href = res.returnData;
+        // } else {
+        //   this.$message.error(res.returnMessage || "获取登录地址失败");
+        // }
+        // window.location.href = res.returnData;
+        this.$router.push({ path: "/login" });
       } catch (error) {
         console.error("获取登录地址失败:", error);
         this.$message.error("获取登录地址失败，请重试");
@@ -298,7 +301,8 @@ export default {
             this.$store.dispatch("user/resetUserInfo");
 
             // 直接使用 window.location 跳转，这会完全刷新页面
-            window.location = this.$process.VUE_APP_RETURN_URL;
+            // window.location = this.$process.VUE_APP_RETURN_URL;
+            this.$router.push({ path: "/login" });
           })
           .catch(() => {
             console.log("用户取消退出");
@@ -344,7 +348,7 @@ export default {
         // 兼容旧代码
         if (item.name == "首页") {
           this.$router.push("/home");
-        } else if (item.name == "培训管理") {
+        } else if (item.name == "测试管理") {
           this.$router.push("/list");
         } else if (item.name == "我的培训") {
           this.$router.push("/myTrain");

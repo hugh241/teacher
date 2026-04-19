@@ -10,7 +10,7 @@
           <el-form :model="paperInfo" label-width="100px" ref="addForm" id="fontsize">
             <el-row>
               <el-col :span="6">
-                <el-form-item label="试卷类型：">
+                <el-form-item label="测试题类型：">
                   <div class="content-detail">
                     <span v-if="paperInfo.type == '1'">练习</span>
                     <span v-if="paperInfo.type == '2'">考试</span>

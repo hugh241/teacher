@@ -5,21 +5,21 @@
       <Form :model="addForm" :rules="formRules" :label-width="100" ref="addForm">
         <Row>
           <i-col span="24">
-            <FormItem label="试卷名称" prop="perName">
-              <Input placeholder="请输入试卷名称" v-model="addForm.perName" :maxlength="100" size="large" show-word-limit
+            <FormItem label="测试题名称" prop="perName">
+              <Input placeholder="请输入测试题名称" v-model="addForm.perName" :maxlength="100" size="large" show-word-limit
                 type="textarea"></Input>
             </FormItem>
           </i-col>
           <i-col span="12">
-            <FormItem label="试卷类型" prop="type">
-              <Select v-model="addForm.type" placeholder="请选择试卷类型" @on-change="choseType" size="large">
+            <FormItem label="测试题类型" prop="type">
+              <Select v-model="addForm.type" placeholder="请选择测试题类型" @on-change="choseType" size="large">
                 <Option v-for="item in typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
               </Select>
             </FormItem>
           </i-col>
           <i-col span="12">
-            <FormItem label="试卷层次" prop="level">
-              <Select v-model="addForm.level" placeholder="请选择试卷层次" @on-change="choseLevel" size="large">
+            <FormItem label="测试题层次" prop="level">
+              <Select v-model="addForm.level" placeholder="请选择测试题层次" @on-change="choseLevel" size="large">
                 <Option v-for="item in levelList" :value="item.value" :key="item.value">{{ item.label }}</Option>
               </Select>
             </FormItem>
@@ -112,16 +112,16 @@ export default {
       },
       formRules: {
         perName: [
-          { required: true, message: '请输入试卷名称' },
+          { required: true, message: '请输入测试题名称' },
         ],
         courseId: [
           { required: true, message: '请选择所属课程' },
         ],
         level: [
-          { required: true, message: '请选择试卷层次' },
+          { required: true, message: '请选择测试题层次' },
         ],
         type: [
-          { required: true, message: '请选择试卷类型' },
+          { required: true, message: '请选择测试题类型' },
         ],
         startTime: [
           { required: true, message: '请选择开始时间' },
@@ -182,7 +182,7 @@ export default {
       });
     },
 
-    //选择试卷类型
+    //选择测试题类型
     choseType(type) {
       if (type == '1' || type == '2') {
         this.levelList = [
@@ -247,7 +247,7 @@ export default {
           let scoreTest = true;
           let passScoreTest = true;
           let chapterTest = true;
-          //试卷层次是课程，总分和及格分数必填
+          //测试题层次是课程，总分和及格分数必填
           if (this.addForm.level == '1') {
             scoreTest = this.scoreTest(this.addForm.totalScore, '试卷总分');
             if (scoreTest) {
@@ -260,7 +260,7 @@ export default {
               }
             }
           }
-          //试卷层次是章节，章节必选，总分和及格分数必填
+          //测试题层次是章节，章节必选，总分和及格分数必填
           if (this.addForm.level == '2') {
             if (this.isEmpty(this.addForm.chapterId)) {
               this.$message.warning('请选择章节');
@@ -279,7 +279,7 @@ export default {
               }
             }
           }
-          //试卷层次是问卷，总分和及格分数默认给0
+          //测试题层次是问卷，总分和及格分数默认给0
           if (this.addForm.level == '4') {
             this.addForm.totalScore = '0';
             this.addForm.passScore = '0';

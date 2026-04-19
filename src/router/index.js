@@ -112,7 +112,7 @@ export const constantRoutes = [{
         hidden: true,
         meta: {
           title: '首页',
-          name: '试卷列表',
+          name: '测试列表',
           path: "/home"
         },
       },

@@ -2,7 +2,7 @@
     <div class="content">
         <div class="searchbox">
             <span style="font-size: 18px;">{{ courseNameItem.courseName || "" }}</span>
-            <el-select v-model="courseNameItem" value-key="id" @change="hanlderChange" placeholder="请选择培训名称">
+            <el-select v-model="courseNameItem" value-key="id" @change="hanlderChange" placeholder="请选择测试名称">
                 <el-option v-for="item in options" :key="item.id" :label="item.courseName" :value="item">
                 </el-option>
             </el-select>

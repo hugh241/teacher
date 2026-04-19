@@ -4,9 +4,9 @@
     <div class="tea_header">
       <div class="title_info">{{ PaperInfo.perName }}</div>
       <div class="title_bot">
-        <span>培训课程：{{ PaperInfo.courseName }}</span>
+        <span>测试课程：{{ PaperInfo.courseName }}</span>
         <span>起始日期：{{ PaperInfo.startTime }}至{{ PaperInfo.endTime }}</span>
-        <el-button type="primary" @click="backList" class="but">返回到试卷列表</el-button>
+        <el-button type="primary" @click="backList" class="but">返回到测试列表</el-button>
       </div>
     </div>
     <div class="tea_con">

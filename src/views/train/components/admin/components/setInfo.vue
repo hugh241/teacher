@@ -6,7 +6,7 @@
     </div>
     <div class="setInfo_body" v-if="!editTag">
       <el-descriptions direction="horizontal" :column="1" border :contentStyle="CS" :label-style="LS">
-        <el-descriptions-item label="培训名称">{{ detailInfo.courseName }}</el-descriptions-item>
+        <el-descriptions-item label="测试名称">{{ detailInfo.courseName }}</el-descriptions-item>
       </el-descriptions>
       <!-- <el-descriptions direction="horizontal" :column="1" border :contentStyle="CS" :label-style="LS">
         <el-descriptions-item label="学时/学分">{{ detailInfo.creditRatio }}</el-descriptions-item>
@@ -63,7 +63,7 @@
         </el-descriptions-item>
       </el-descriptions> -->
       <el-descriptions direction="horizontal" :column="1" border :contentStyle="CS" :label-style="LS">
-        <el-descriptions-item label="培训介绍">
+        <el-descriptions-item label="测试结束">
           <div v-html="formatCourseIntroduce(detailInfo.courseIntroduce)"></div>
         </el-descriptions-item>
       </el-descriptions>
@@ -113,7 +113,7 @@ export default {
   computed: {},
   watch: {},
   methods: {
-    // 格式化培训介绍，处理图片尺寸
+    // 格式化测试结束，处理图片尺寸
     formatCourseIntroduce(content) {
       if (!content) return '';
       

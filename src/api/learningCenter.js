@@ -166,7 +166,7 @@ export function editQuestion(param) {
   })
 }
 
-//试卷管理
+//测试题管理
 export function addPaperPer(param) {
   return request({
     url: '/paperPer/addPaperPer',
@@ -220,6 +220,13 @@ export function getPaperInfo(param) {
 export function getAnswerRecordDetail3(param) {
   return request({
     url: '/paperUserRecord/getAnswerRecordDetail3',
+    method: 'post',
+    data: param
+  })
+}
+export function getPaperPerInfo3(param) {
+  return request({
+    url: '/paperPer/getPaperPerInfo3?perId=2032801782834556928',
     method: 'post',
     data: param
   })

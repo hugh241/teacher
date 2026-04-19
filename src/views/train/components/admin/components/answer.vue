@@ -9,9 +9,9 @@
             <el-table-column prop="createTime" label="完成时间" align="center"> </el-table-column>
             <el-table-column prop="userAccount" label="用户账号" align="center"> </el-table-column>
             <el-table-column prop="userName" label="用户姓名" align="center" width="180"> </el-table-column>
-            <el-table-column prop="perName" label="试卷名称" align="center"> </el-table-column>
+            <el-table-column prop="perName" label="测试题名称" align="center"> </el-table-column>
             <el-table-column prop="score" label="得分" align="center" width="120"></el-table-column>
-            <el-table-column label="试卷类型" align="center">
+            <el-table-column label="测试题类型" align="center">
               <template slot-scope="scope">
                 <span>{{
                   scope.row.perType == '1' ? '练习' : scope.row.perType == '2' ? '考试' : scope.row.perType == '3' ?

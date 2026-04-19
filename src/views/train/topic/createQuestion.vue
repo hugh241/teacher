@@ -23,7 +23,7 @@
             <div class="header_tittle">{{ PaperInfo.perName }}</div>
             <div class="header_bot">
               <div class="header_bot-left">
-                <span>培训课程：{{ PaperInfo.courseName }}</span>
+                <span>测试课程：{{ PaperInfo.courseName }}</span>
               </div>
               <div class="header_bot_right">
                 <span>起始日期：{{ PaperInfo.startTime }}至{{ PaperInfo.endTime }}</span>
@@ -474,7 +474,7 @@ export default {
         //   })
         // }
       } else {
-        this.$confirm('还没有添加试题，确定要返回试卷列表吗？',
+        this.$confirm('还没有添加试题，确定要返回测试列表吗？',
           "警告",
           {
             confirmButtonText: "确定",

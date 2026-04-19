@@ -30,7 +30,7 @@
           ></el-table-column>
           <el-table-column
             prop="courseName"
-            label="培训名称"
+            label="测试名称"
             show-overflow-tooltip
             align="center"
           ></el-table-column>

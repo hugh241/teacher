@@ -73,7 +73,7 @@ export default {
         {
           type: '',
           props: 'perName',
-          label: '试卷名称',
+          label: '测试题名称',
           filters: '',
           sortable: false,
           fixed: false,
@@ -82,7 +82,7 @@ export default {
         {
           type: '',
           props: 'type',
-          label: '试卷类型',
+          label: '测试题类型',
           filters: '',
           sortable: false,
           fixed: false,
@@ -196,7 +196,7 @@ export default {
           item.state = item.state == '0' ? '停用' : item.state == '1' ? '无效 ' : item.state == '2' ? '启用' : '停用'
           // 层次类型 【1：课程 2：章节 3：小节 4：问卷】
           item.level = item.level == '1' ? '课程' : item.level == '2' ? '章节 ' : item.level == '3' ? '小节' : item.level == '4' ? '问卷' : ''
-          // 试卷类型 1：练习 2：考试 4：问卷
+          // 测试题类型 1：练习 2：考试 4：问卷
           item.type = item.type == '1' ? '练习' : item.type == '2' ? '考试 ' : item.type == '4' ? '问卷' : ''
         }
         this.tableData = res.returnData
@@ -206,7 +206,7 @@ export default {
     },
     // 新增
     addClick() {
-      this.$refs.paperAddRef.title = '创建试卷'
+      this.$refs.paperAddRef.title = '创建测试题'
       this.$refs.paperAddRef.addForm.courseId = this.courseInfo.id
       this.$refs.paperAddRef.getCourseDetails()
       this.$refs.paperAddRef.show()

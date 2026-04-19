@@ -3,16 +3,17 @@
   <div class="container">
     <questionsDetail v-if="questionsTag" :courseId="topic.courseId" :paperId="topic.paperId" @backList="backList" />
     <questionsDetail2 v-if="questionsTag2" :courseId="topic.courseId" :paperId="topic.paperId" @backList="backList" />
+    <questionsDetail3 v-if="questionsTag3" :courseId="topic.courseId" :paperId="topic.paperId" @backList="backList" />
     <createQuestion v-else-if="createTag" :courseId="topic.courseId" :paperId="topic.paperId" @backList="backList" />
 
     <div v-else class="container_box">
       <div class="con_center">
         <div class="soat">
           <div class="jspx_titbar">
-            <span style="fontsize: 16px; fontweight: 500">设置试卷列表</span>
+            <span style="fontsize: 16px; fontweight: 500">设置测试题列表</span>
           </div>
           <div class="soat_right">
-            <el-button type="primary" icon="el-icon-plus" size="small" @click="addClick()">创建试卷</el-button>
+            <el-button type="primary" icon="el-icon-plus" size="small" @click="addClick()">创建测试题</el-button>
           </div>
         </div>
 
@@ -26,6 +27,7 @@
               }}</el-button>
             <el-button type="text" @click="deleteListClick(scope.row)" style="color: #e47471">删除</el-button>
             <el-button type="text" @click="cuotiClick(scope.row)">错题率</el-button>
+            <el-button type="text" @click="paimingClick(scope.row)">学生排名</el-button>
           </template>
           <!-- <template slot="Pagination">
                         <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
@@ -67,6 +69,7 @@ export default {
     questionsDetail: () => import('@/views/train/topic/questionsDetail.vue'), //查看题目
     createQuestion: () => import('@/views/train/topic/createQuestion.vue'), //设置题目
     questionsDetail2: () => import('@/views/train/topic/questionsDetail2.vue'), //查看题目
+    questionsDetail3: () => import('@/views/train/topic/questionsDetail3.vue')
   },
   data() {
     return {
@@ -76,6 +79,7 @@ export default {
       },
       questionsTag: false,
       questionsTag2: false,
+      questionsTag3: false,
       createTag: false,
       settingId: '',
       addwidth: '65%',
@@ -100,7 +104,7 @@ export default {
         {
           type: '',
           props: 'perName',
-          label: '试卷名称',
+          label: '测试题名称',
           filters: '',
           sortable: false,
           fixed: false,
@@ -109,7 +113,7 @@ export default {
         {
           type: '',
           props: 'level',
-          label: '试卷层次',
+          label: '测试题层次',
           filters: '',
           sortable: false,
           fixed: false,
@@ -118,7 +122,7 @@ export default {
         {
           type: '',
           props: 'type',
-          label: '试卷类型',
+          label: '测试题类型',
           filters: '',
           sortable: false,
           fixed: false,
@@ -229,7 +233,7 @@ export default {
           item.state = item.state == '0' ? '停用' : item.state == '1' ? '无效 ' : item.state == '2' ? '启用' : '停用'
           // 层次类型 【1：课程 2：章节 3：小节 4：问卷】
           item.level = item.level == '1' ? '课程' : item.level == '2' ? '章节 ' : item.level == '3' ? '小节' : item.level == '4' ? '问卷' : ''
-          // 试卷类型 1：练习 2：考试 4：问卷
+          // 测试题类型 1：练习 2：考试 4：问卷
           item.type = item.type == '1' ? '练习' : item.type == '2' ? '考试 ' : item.type == '4' ? '问卷' : ''
         }
         this.tableData = res.returnData
@@ -239,7 +243,7 @@ export default {
     },
     // 新增
     addClick() {
-      this.$refs.paperAddRef.title = '创建试卷'
+      this.$refs.paperAddRef.title = '创建测试题'
       this.$refs.paperAddRef.addForm.courseId = this.courseInfo.id
       this.$refs.paperAddRef.getCourseDetails()
       this.$refs.paperAddRef.show()
@@ -284,6 +288,11 @@ export default {
       this.topic.courseId = row.courseId
       this.questionsTag2 = true
     },
+    paimingClick(row) {
+      this.topic.paperId = row.id
+      this.topic.courseId = row.courseId
+      this.questionsTag3 = true
+    },
     // 设置题目
     setClick(row) {
       this.topic.paperId = row.id
@@ -297,6 +306,7 @@ export default {
       this.createTag = false
       this.questionsTag = false
       this.questionsTag2 = false
+      this.questionsTag3 = false
     },
     //启用试卷
     startPaper(row) {

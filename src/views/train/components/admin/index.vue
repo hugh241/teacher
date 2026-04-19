@@ -49,7 +49,7 @@ export default {
         //   activeName: "setChapter",
         // },
         {
-          title: "试卷管理",
+          title: "测试题管理",
           activeName: "setTopic",
         },
         // {
@@ -107,7 +107,7 @@ export default {
             activeName: "setChapter",
           },
           {
-            title: "试卷管理",
+            title: "测试题管理",
             activeName: "setTopic",
           },
           {
@@ -146,7 +146,7 @@ export default {
               activeName: "setChapter",
             },
             {
-              title: "试卷管理",
+              title: "测试题管理",
               activeName: "setTopic",
             },
             {
@@ -182,7 +182,7 @@ export default {
               activeName: "setChapter",
             },
             {
-              title: "试卷管理",
+              title: "测试题管理",
               activeName: "setTopic",
             },
             {
@@ -215,7 +215,7 @@ export default {
               activeName: "setChapter",
             },
             {
-              title: "试卷管理",
+              title: "测试题管理",
               activeName: "setTopic",
             },
             {

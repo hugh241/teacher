@@ -1273,10 +1273,10 @@ export default {
     formatTrainingOptions() {
       this.trainingOptions = this.courseList.map((course) => ({
         value: course.id, // 使用培训id作为value
-        label: course.courseName, // 使用培训名称作为label
+        label: course.courseName, // 使用测试名称作为label
       }));
 
-      // 同时构建培训详情数据（用于显示培训名称）
+      // 同时构建培训详情数据（用于显示测试名称）
       this.trainingDetails = {};
       this.courseList.forEach((course) => {
         this.trainingDetails[course.id] = {

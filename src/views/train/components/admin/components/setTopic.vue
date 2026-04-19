@@ -2,17 +2,17 @@
 <template>
   <div class="setExperience">
     <div class="setInfo_header">
-      <span style="fontsize: 16px">设置试卷列表</span>
-      <el-button type="primary" icon="el-icon-plus" size="mini">创建试卷</el-button>
+      <span style="fontsize: 16px">设置测试题列表</span>
+      <el-button type="primary" icon="el-icon-plus" size="mini">创建测试题</el-button>
     </div>
     <div class="set_main">
       <div class="set_tab">
         <div v-if="tableData.length > 0">
           <el-table :data="tableData" style="width: 100%" :header-cell-style="{ 'background-color': '#F7F8FA' }">
             <el-table-column prop="index" label="序号" width="60" align="center"> </el-table-column>
-            <el-table-column prop="userName" label="试卷名称" width="360" align="center"> </el-table-column>
-            <el-table-column prop="cityName" label="试卷层次" align="center" width="100"> </el-table-column>
-            <el-table-column prop="countryName" label="试卷类型" align="center" width="100"> </el-table-column>
+            <el-table-column prop="userName" label="测试题名称" width="360" align="center"> </el-table-column>
+            <el-table-column prop="cityName" label="测试题层次" align="center" width="100"> </el-table-column>
+            <el-table-column prop="countryName" label="测试题类型" align="center" width="100"> </el-table-column>
             <el-table-column prop="schoolName" label="开始时间" align="center"> </el-table-column>
             <el-table-column prop="schoolName" label="结束时间" align="center"> </el-table-column>
             <el-table-column label="是否启用" align="center" width="100" >

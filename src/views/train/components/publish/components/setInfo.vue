@@ -11,7 +11,7 @@
     >
       <el-row>
         <el-col :span="24">
-          <el-form-item label="培训名称：" prop="courseName">
+          <el-form-item label="测试名称：" prop="courseName">
             <el-input
               v-model="ruleForm.courseName"
               autocomplete="off"
@@ -395,7 +395,7 @@ export default {
       },
       rules: {
         courseName: [
-          { required: true, message: "请填写培训课程名称", trigger: "change" },
+          { required: true, message: "请填写测试课程名称", trigger: "change" },
           { max: 60, message: "最长不能超过60字", trigger: "change" },
         ],
         creditRatio: [

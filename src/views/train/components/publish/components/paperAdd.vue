@@ -5,30 +5,30 @@
         label-width="100px">
         <!-- <el-row>
           <el-col :span="24">
-            <el-form-item label="试卷名称" prop="perName">
-              <el-input placeholder="请输入试卷名称" v-model="addForm.perName" :maxlength="30" size="large"
+            <el-form-item label="测试题名称" prop="perName">
+              <el-input placeholder="请输入测试题名称" v-model="addForm.perName" :maxlength="30" size="large"
                 show-word-limit></el-input>
             </el-form-item>
           </el-col>
         </el-row> -->
         <el-row>
           <el-col :span="12">
-            <el-form-item label="试卷名称" prop="perName">
-              <el-input placeholder="请输入试卷名称" v-model="addForm.perName" :maxlength="30" size="large"
+            <el-form-item label="测试题名称" prop="perName">
+              <el-input placeholder="请输入测试题名称" v-model="addForm.perName" :maxlength="30" size="large"
                 show-word-limit></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="试卷类型" prop="type">
-              <el-select style="width:100%" v-model="addForm.type" placeholder="请选择试卷类型" @change="choseType" size="large">
+            <el-form-item label="测试题类型" prop="type">
+              <el-select style="width:100%" v-model="addForm.type" placeholder="请选择测试题类型" @change="choseType" size="large">
                 <el-option v-for="item in typeList" :label="item.label" :value="item.value" :key="item.value">{{
                   item.label }}</el-option>
               </el-select>
             </el-form-item>
           </el-col>
           <!-- <el-col :span="12">
-            <el-form-item label="试卷层次" prop="level">
-              <el-select style="width:100%" v-model="addForm.level" placeholder="请选择试卷层次" @change="choseLevel"
+            <el-form-item label="测试题层次" prop="level">
+              <el-select style="width:100%" v-model="addForm.level" placeholder="请选择测试题层次" @change="choseLevel"
                 size="large">
                 <el-option v-for="item in levelList" :label="item.label" :value="item.value" :key="item.value">{{
                   item.label }}</el-option>
@@ -158,16 +158,16 @@ export default {
       },
       formRules: {
         perName: [
-          { required: true, message: '请输入试卷名称', trigger: 'blur' },
+          { required: true, message: '请输入测试题名称', trigger: 'blur' },
         ],
         courseId: [
           { required: true, message: '请选择所属课程', trigger: 'blur' },
         ],
         level: [
-          { required: true, message: '请选择试卷层次', trigger: 'blur' },
+          { required: true, message: '请选择测试题层次', trigger: 'blur' },
         ],
         type: [
-          { required: true, message: '请选择试卷类型', trigger: 'blur' },
+          { required: true, message: '请选择测试题类型', trigger: 'blur' },
         ],
         startTime: [
           { required: true, message: '请选择开始时间', trigger: 'blur' },
@@ -232,7 +232,7 @@ export default {
       })
     },
 
-    //选择试卷类型
+    //选择测试题类型
     choseType(type) {
       console.log(type, 999)
       // 层次清空
@@ -309,7 +309,7 @@ export default {
           let scoreTest = true;
           let passScoreTest = true;
           let chapterTest = true;
-          //试卷层次是课程，总分和及格分数必填
+          //测试题层次是课程，总分和及格分数必填
           if (this.addForm.level == '1') {
             scoreTest = this.scoreTest(this.addForm.totalScore, '试卷总分');
             if (scoreTest) {
@@ -322,7 +322,7 @@ export default {
               }
             }
           }
-          //试卷层次是章节，章节必选，总分和及格分数必填
+          //测试题层次是章节，章节必选，总分和及格分数必填
           if (this.addForm.level == '2') {
             if (this.isEmpty(this.addForm.chapterId)) {
               this.$message.warning('请选择章节');
@@ -341,7 +341,7 @@ export default {
               }
             }
           }
-          //试卷层次是问卷，总分和及格分数默认给0
+          //测试题层次是问卷，总分和及格分数默认给0
           if (this.addForm.level == '4') {
             this.addForm.totalScore = '0';
             this.addForm.passScore = '0';

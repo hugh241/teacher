@@ -2,79 +2,34 @@
 <template>
   <div class="teacher">
     <div class="tea_header">
-      <div class="title_info">{{ PaperInfo.perName }}</div>
       <div class="title_bot">
-        <span>测试课程：{{ PaperInfo.courseName }}</span>
-        <span>起始日期：{{ PaperInfo.startTime }}至{{ PaperInfo.endTime }}</span>
         <el-button type="primary" @click="backList" class="but">返回到测试列表</el-button>
       </div>
     </div>
     <div class="tea_con">
       <div class="tea_left">
-        <!-- <div class="question_con">
-          
-          <el-tabs v-model="activeName" @tab-click="handleClick">
-       
-            <el-tab-pane label="单选题" name="1" v-if="answerCardInfo.topicScore1 != 0"> </el-tab-pane>
-          
-            <el-tab-pane label="多选题" name="2" v-if="answerCardInfo.topicScore2 != 0"> </el-tab-pane>
-            
-            <el-tab-pane label="判断题" name="3" v-if="answerCardInfo.topicScore3 != 0"> </el-tab-pane>
-           
-            <el-tab-pane label="解答题" name="4" v-if="answerCardInfo.topicScore4 != 0"> </el-tab-pane>
-          </el-tabs>
-        </div> -->
         <div class="question_main">
-          <div v-for="(item, index) in tableData" :key="index">
-            <!-- 单选题 -->
-            <div class="single_box" v-if="activeName == '1' && tableData.length > 0">
-              <div class="sing_title">
-                <span>{{ index + 1 }}.</span>
-                <div class="qus_type">【单选题】</div>
-                <div>{{ item.title }}</div>
-                <div>（ {{ item.rightAnswerNew }} ）</div>
-                <div>({{ item.score }}分)</div>
-              </div>
-              <div class="sing_wraper">
-                <el-checkbox-group v-model="radio[index]" class="answer_check_wrapper_con">
-                  <el-checkbox :label="index1 + 1 + ''" v-for="(item1, index1) in item.optionList" :key="index1"
-                    :disabled="true">{{ item1.optionName }}</el-checkbox>
-                </el-checkbox-group>
-              </div>
-            </div>
-            <!--  多选题-->
-            <div class="single_box" v-if="activeName == '2' && tableData.length > 0">
-              <div class="sing_title">
-                <span>{{ index + 1 }}.</span>
-                <div class="qus_type">【多选题】</div>
-                <div>{{ item.title }}</div>
-                <div>（ {{ item.rightAnswerNew }} ）</div>
-                <div>({{ item.score }}分)</div>
-              </div>
-              <div class="sing_wraper">
-                <el-checkbox-group v-model="radio[index]" class="answer_check_wrapper_con">
-                  <el-checkbox :label="index1 + 1 + ''" v-for="(item1, index1) in item.optionList" :key="index1"
-                    :disabled="true">{{ item1.optionName }}</el-checkbox>
-                </el-checkbox-group>
-              </div>
-            </div>
-            <!-- 判断题 -->
-            <div class="single_box" v-if="activeName == '3' && tableData.length > 0">
-              <div class="sing_title">
-                <span>{{ index + 1 }}.</span>
-                <div class="qus_type">【判断题】</div>
-                <div>{{ item.title }}</div>
-                <div>（ {{ item.rightAnswerNew }} ）</div>
-                <div>({{ item.score }}分)</div>
-              </div>
-              <div class="sing_wraper">
-                <el-checkbox-group v-model="radio[index]" class="answer_check_wrapper_con">
-                  <el-checkbox :label="index1 + 1 + ''" v-for="(item1, index1) in item.optionList" :key="index1"
-                    :disabled="true">{{ item1.optionName }}</el-checkbox>
-                </el-checkbox-group>
-              </div>
-            </div>
-          </div>
+          <el-table :data="tableData" style="width: 100%">
+            <el-table-column type="index" width="50"> </el-table-column>
+            <el-table-column
+              prop="userName"
+              label="姓名"
+              align="center"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="score"
+              label="分数"
+              align="center"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="order"
+              label="排名"
+              align="center"
+            >
+            </el-table-column>
+          </el-table>
         </div>
       </div>
     </div>
@@ -82,30 +37,12 @@
 </template>
 
 <script>
-import { getPaperTotalScore, getPaperInfo } from '@/api/learningCenter'
+import { getPaperTotalScore, getPaperPerInfo3 } from '@/api/learningCenter'
 export default {
   props: ['courseId', 'paperId'],
   data() {
     return {
-      PaperInfo: {},
-      // 题目类型切换
-      activeName: '1',
-      tableData: [],
-      radio: [],
-      value: '',
-      answerCardInfo: {
-        //题目总数
-        topicTotal: 10,
-        //各种题型分值
-        topicScore1: 10,
-        topicScore2: 10,
-        topicScore3: 10,
-        //总分值
-        topicScoreTotal: 10,
-      },
-      topicList1: [],
-      topicList2: [],
-      topicList3: [],
+      tableData: []
     }
   },
   created() { },
@@ -114,53 +51,18 @@ export default {
   },
 
   methods: {
-    // 题目类型切换
-    handleClick(tab, event) {
-      this.activeName = tab.name
-      this.getList()
-    },
     backList() {
       this.$emit('backList')
     },
-
-    /* 接口 */
-    // 获取列表
     async getList() {
       let data = {
         paperId: this.paperId,
         topicType: '',
       }
-      let res = await getPaperInfo(data)
+      let res = await getPaperPerInfo3(data)
       if (res.returnCode == 200) {
-        this.PaperInfo = res.returnData;
-        this.radio = []
-        this.tableData = []
-        let index = 0
-        // debugger
-        for (let i = 0; i < res.returnData.paperQuestionsList.length; i++) {
-          //题目
-          let element = res.returnData.paperQuestionsList[i]
-          // if (element.titleType == this.activeName) {
-            let str = ''
-            let tmp = element.optionList
-            let arr = []
-            for (let j = 0; j < tmp.length; j++) {
-              if (tmp[j].isTrue == '0') {
-                str += tmp[j].sort + ','
-                arr.push(j + 1 + '')
-              }
-            }
-            this.radio[index] = arr
-            if (str.length > 0) {
-              str = str.substr(0, str.length - 1)
-            }
-            element.rightAnswerNew = str
-            this.tableData.push(element)
-            index++
-          // }
-        }
+        this.tableData = res.returnData;
       }
-      console.log('sadaa',this.tableData);
     },
   },
 }

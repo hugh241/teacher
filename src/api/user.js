@@ -2,9 +2,10 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/user/login',
+    // url: '/user/login',
+    url: '/sso/oauth/token',
     method: 'post',
-    params: data
+    data: data
   })
 }
 
@@ -46,7 +47,7 @@ export function captchaImage() {
 // 退出到中小学智慧教育平台
 export function logoutUrl(data) {
   return request({
-    url: '/sso/login/url',
+    url: '/login/url',
     method: 'post',
     params: data
   })

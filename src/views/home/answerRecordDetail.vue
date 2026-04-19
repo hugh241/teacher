@@ -1,9 +1,7 @@
 <template>
   <div class="container">
+    <BreadCrumb :type="1" />
     <div class="union_company">
-      <div class="record_detail flex_R">
-        <el-button @click="backPaperList" type="primary" icon="el-icon-back" size="mini">返回</el-button>
-      </div>
       <div>
         <el-card>
           <p slot="header" style="font-size: 24px;height: 36px;line-height: 36px;text-align: center">{{ paperInfo.perName
@@ -21,25 +19,10 @@
                 </el-form-item>
               </el-col>
               <el-col :span="6">
-                <el-form-item label="测试题层次：">
-                  <div class="content-detail">
-                    <span v-if="paperInfo.level == '1'">课程</span>
-                    <span v-if="paperInfo.level == '2'">章节</span>
-                    <span v-if="paperInfo.level == '4'">问卷</span>
-                  </div>
-                </el-form-item>
-              </el-col>
-              <el-col :span="6">
                 <el-form-item label="所属课程：">
                   <div class="content-detail">{{ paperInfo.courseName }}</div>
                 </el-form-item>
               </el-col>
-              <el-col :span="6">
-                <el-form-item label="所属章节：">
-                  <div class="content-detail">{{ paperInfo.chapterName == null ? '--' : paperInfo.chapterName }}</div>
-                </el-form-item>
-              </el-col>
-
             </el-row>
             <el-row>
               <el-col :span="6">
@@ -230,7 +213,7 @@
         <el-row
           v-if="oneChooseQuestionList.length == 0 && moreChooseQuestionList.length == 0 && judgeQuestionList.length == 0">
           <div class="tabContent nodata">
-            <img src="../../../assets/images/learningCenter/wushuju.png" alt />
+            <!-- <img src="../../../assets/images/learningCenter/wushuju.png" alt /> -->
             <el-col class="nodatacon">
               <h3>暂无数据</h3>
             </el-col>
@@ -243,9 +226,11 @@
 </template>
 
 <script>
-import { getAnswerRecordDetail } from '@/api/learningCenter';
+import { getAnswerRecordDetail2 } from '@/api/learningCenter';
 export default {
-  props: ['detailInfo'],
+  components: {
+    BreadCrumb : () => import('@/components/Breadcrumb/index.vue'),
+  },
   data() {
     return {
       paperId: '',
@@ -260,10 +245,15 @@ export default {
       moreChooseScore: 0,
       judgeQuestionList: [],
       judgeScore: 0,
+      examId: ''
 
     };
   },
-  components: {
+  created() {
+    this.examId = this.$route.query.examId
+  },
+  mounted() {
+    this.getPaperInfo();
 
   },
   methods: {
@@ -286,11 +276,9 @@ export default {
     //获取试卷详情
     getPaperInfo() {
       let param = {
-        paperId: this.paperId,
-        userId: this.userId,
-        recordId: this.recordId
+        id: this.examId
       }
-      getAnswerRecordDetail(param).then(res => {
+      getAnswerRecordDetail2(param).then(res => {
         if (res.returnCode == "200") {
           this.paperInfo = res.returnData.paperPer;
           this.userRecord = res.returnData.userRecord;
@@ -333,13 +321,6 @@ export default {
       this.moreChooseScore = moreChooseScore;
       this.judgeScore = judgeScore;
     }
-  },
-  mounted() {
-    this.paperId = this.detailInfo.perId || "";
-    this.userId = this.detailInfo.userId || "";
-    this.recordId = this.detailInfo.id || "";
-    this.getPaperInfo();
-
   },
 };
 </script>

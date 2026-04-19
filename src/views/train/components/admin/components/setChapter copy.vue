@@ -11,7 +11,7 @@
         <div v-if="tableData.length > 0">
           <el-table :data="tableData" style="width: 100%" :header-cell-style="{ 'background-color': '#F7F8FA' }">
             <el-table-column prop="index" label="序号" width="80"> </el-table-column>
-            <el-table-column prop="courseName" label="培训名称" width="280"> </el-table-column>
+            <el-table-column prop="courseName" label="测试名称" width="280"> </el-table-column>
             <el-table-column prop="chapterName" label="章节名称" width="280"> </el-table-column>
             <el-table-column prop="chapterIntroduce" label="章节简介"> </el-table-column>
 

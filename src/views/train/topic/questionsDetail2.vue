@@ -11,19 +11,6 @@
     </div>
     <div class="tea_con">
       <div class="tea_left">
-        <!-- <div class="question_con">
-          
-          <el-tabs v-model="activeName" @tab-click="handleClick">
-       
-            <el-tab-pane label="单选题" name="1" v-if="answerCardInfo.topicScore1 != 0"> </el-tab-pane>
-          
-            <el-tab-pane label="多选题" name="2" v-if="answerCardInfo.topicScore2 != 0"> </el-tab-pane>
-            
-            <el-tab-pane label="判断题" name="3" v-if="answerCardInfo.topicScore3 != 0"> </el-tab-pane>
-           
-            <el-tab-pane label="解答题" name="4" v-if="answerCardInfo.topicScore4 != 0"> </el-tab-pane>
-          </el-tabs>
-        </div> -->
         <div class="question_main">
           <div v-for="(item, index) in tableData" :key="index">
             <!-- 单选题 -->
@@ -38,7 +25,7 @@
               <div class="sing_wraper">
                 <el-checkbox-group v-model="radio[index]" class="answer_check_wrapper_con">
                   <el-checkbox :label="index1 + 1 + ''" v-for="(item1, index1) in item.optionList" :key="index1"
-                    :disabled="true">{{ item1.optionName }}</el-checkbox>
+                    :disabled="true">{{ item1.optionName }} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;错题率:{{ item1.saleContent }}</el-checkbox>
                 </el-checkbox-group>
               </div>
             </div>
@@ -54,7 +41,7 @@
               <div class="sing_wraper">
                 <el-checkbox-group v-model="radio[index]" class="answer_check_wrapper_con">
                   <el-checkbox :label="index1 + 1 + ''" v-for="(item1, index1) in item.optionList" :key="index1"
-                    :disabled="true">{{ item1.optionName }}</el-checkbox>
+                    :disabled="true">{{ item1.optionName }} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;错题率:{{ item1.saleContent }}</el-checkbox>
                 </el-checkbox-group>
               </div>
             </div>
@@ -70,7 +57,7 @@
               <div class="sing_wraper">
                 <el-checkbox-group v-model="radio[index]" class="answer_check_wrapper_con">
                   <el-checkbox :label="index1 + 1 + ''" v-for="(item1, index1) in item.optionList" :key="index1"
-                    :disabled="true">{{ item1.optionName }}</el-checkbox>
+                    :disabled="true">{{ item1.optionName }} &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;错题率:{{ item1.saleContent }}</el-checkbox>
                 </el-checkbox-group>
               </div>
             </div>
@@ -82,7 +69,7 @@
 </template>
 
 <script>
-import { getPaperTotalScore, getPaperInfo } from '@/api/learningCenter'
+import { getPaperTotalScore, getAnswerRecordDetail3 } from '@/api/learningCenter'
 export default {
   props: ['courseId', 'paperId'],
   data() {
@@ -130,16 +117,16 @@ export default {
         paperId: this.paperId,
         topicType: '',
       }
-      let res = await getPaperInfo(data)
+      let res = await getAnswerRecordDetail3(data)
       if (res.returnCode == 200) {
-        this.PaperInfo = res.returnData;
+        this.PaperInfo = res.returnData.paperPer;
         this.radio = []
         this.tableData = []
         let index = 0
         // debugger
-        for (let i = 0; i < res.returnData.paperQuestionsList.length; i++) {
+        for (let i = 0; i < res.returnData.paperPer.paperQuestionsList.length; i++) {
           //题目
-          let element = res.returnData.paperQuestionsList[i]
+          let element = res.returnData.paperPer.paperQuestionsList[i]
           // if (element.titleType == this.activeName) {
             let str = ''
             let tmp = element.optionList

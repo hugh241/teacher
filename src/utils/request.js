@@ -12,16 +12,17 @@ import { logoutUrl } from '@/api/user'
 
 const redirectToLogin = async () => {
   try {
-    const res = await logoutUrl();
-    if (res.returnCode === "200" && res.returnData) {
-      window.location.href = res.returnData;
-    } else {
-      // 如果接口返回失败，使用默认错误处理
-      console.error('获取跳转地址失败:', res.returnMessage);
-      // 可以跳转到错误页面或者保持当前页面
-      // 这里选择跳转到无权限页面
-      window.location.href = '/noPermission';
-    }
+    // const res = await logoutUrl();
+    // if (res.returnCode === "200" && res.returnData) {
+    //   window.location.href = res.returnData;
+    // } else {
+    //   // 如果接口返回失败，使用默认错误处理
+    //   console.error('获取跳转地址失败:', res.returnMessage);
+    //   // 可以跳转到错误页面或者保持当前页面
+    //   // 这里选择跳转到无权限页面
+    //   window.location.href = '/noPermission';
+    // }
+    window.location.href = '/login';
   } catch (error) {
     console.error('调用跳转接口失败:', error);
     // 接口调用失败时跳转到无权限页面
@@ -46,7 +47,7 @@ service.interceptors.request.use(
     if (getToken()) {
       config.headers['X-Token'] = getToken()
     }
-    config.headers['Content-Type'] = 'application/json;charset=utf-8'
+    config.headers['Content-Type'] = 'application/json;charset=utf-8';
     // config.data = formData;
     return config
   },

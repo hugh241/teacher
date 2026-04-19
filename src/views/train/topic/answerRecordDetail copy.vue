@@ -22,7 +22,7 @@
           <Form :model="paperInfo" :label-width="100" ref="addForm" id="fontsize">
             <Row type="flex" justify="start">
               <i-col span="6">
-                <FormItem label="试卷类型：">
+                <FormItem label="测试题类型：">
                   <div class="content-detail">
                     <span v-if="paperInfo.type == '1'">练习</span>
                     <span v-if="paperInfo.type == '2'">考试</span>
@@ -31,7 +31,7 @@
                 </FormItem>
               </i-col>
               <i-col span="6" pull="2">
-                <FormItem label="试卷层次：">
+                <FormItem label="测试题层次：">
                   <div class="content-detail">
                     <span v-if="paperInfo.level == '1'">课程</span>
                     <span v-if="paperInfo.level == '2'">章节</span>

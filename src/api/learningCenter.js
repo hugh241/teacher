@@ -166,7 +166,7 @@ export function editQuestion(param) {
   })
 }
 
-//试卷管理
+//测试题管理
 export function addPaperPer(param) {
   return request({
     url: '/paperPer/addPaperPer',
@@ -177,6 +177,13 @@ export function addPaperPer(param) {
 export function getPaperPerList(param) {
   return request({
     url: '/paperPer/getPaperPerList',
+    method: 'post',
+    params: param
+  })
+}
+export function getPaperPerList2(param) {
+  return request({
+    url: '/paperPer/getPaperPerList2',
     method: 'post',
     params: param
   })
@@ -206,6 +213,20 @@ export function deletePaperPer(param) {
 export function getPaperInfo(param) {
   return request({
     url: '/paperPer/getPaperInfo',
+    method: 'post',
+    data: param
+  })
+}
+export function getAnswerRecordDetail3(param) {
+  return request({
+    url: '/paperUserRecord/getAnswerRecordDetail3',
+    method: 'post',
+    data: param
+  })
+}
+export function getPaperPerInfo3(param) {
+  return request({
+    url: '/paperPer/getPaperPerInfo3?perId=2032801782834556928',
     method: 'post',
     data: param
   })
@@ -299,6 +320,13 @@ export function getRecordList(param) {
 export function getAnswerRecordDetail(param) {
   return request({
     url: '/paperUserRecord/getAnswerRecordDetail',
+    method: 'post',
+    data: param
+  })
+}
+export function getAnswerRecordDetail2(param) {
+  return request({
+    url: '/paperUserRecord/getAnswerRecordDetail2',
     method: 'post',
     data: param
   })

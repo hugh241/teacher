@@ -14,10 +14,10 @@
 
       <div class="filter-bar">
         <el-form :inline="true" label-width="80px">
-          <el-form-item label="培训名称">
+          <el-form-item label="测试名称">
             <el-input
               v-model="query.courseName"
-              placeholder="请输入培训名称搜索"
+              placeholder="请输入测试名称搜索"
               clearable
               @keyup.enter.native="handleSearch"
               style="width: 300px"
@@ -38,7 +38,7 @@
         element-loading-text="加载中..."
       >
         <el-table-column type="index" width="60" label="#"></el-table-column>
-        <el-table-column prop="courseName" label="培训名称" min-width="240" />
+        <el-table-column prop="courseName" label="测试名称" min-width="240" />
         <el-table-column label="培训状态" width="120">
           <template slot-scope="{ row }">
             <el-tag :type="getStatusTagType(row.stateName)">

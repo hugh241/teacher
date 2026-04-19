@@ -8,11 +8,11 @@
             <p>{{ paperInfo.perName }}</p>
             <ul>
               <li>
-                <span>试卷类型：</span>
+                <span>测试题类型：</span>
                 <span class="desc">{{ paperInfo.type === '1' ? '练习' : paperInfo.type === '2' ? '考试' : paperInfo.type === '4' ? '问卷' : '' }}</span>
               </li>
               <li>
-                <span>试卷层次：</span>
+                <span>测试题层次：</span>
                 <span class="desc">{{
                   paperInfo.level === '1' ? '课程' : paperInfo.level === '2' ? '章节' : paperInfo.level === '3' ? '小节' : paperInfo.level === '4' ? '问卷' : ''
                 }}</span>

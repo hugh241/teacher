@@ -10,7 +10,7 @@ const name = defaultSettings.title || process.env.VUE_APP_ALL_TITLE; // 标题
 const port = process.env.port || process.env.npm_config_port || 8008; // 端口
 module.exports = defineConfig({
   transpileDependencies: true, // 是否对依赖进行转译
-  publicPath: process.env.VUE_APP_IS_PROD === "1" ? "/hd/teacherTraining" : "/hd/teacherTraining",
+  publicPath: process.env.VUE_APP_IS_PROD === "1" ? "/hd/teacherTraining" : "/",
   // publicPath: 'https://cdnbasic.scbdc.edu.cn/%E7%9C%81%E7%BA%A7%E8%B5%84%E6%BA%90/hd/',
   outputDir: "teacherTraining", // 在npm run build 或 yarn build 时 ，生成文件的目录名称（要和baseUrl的生产环境路径一致）（默认dist）
   assetsDir: "static", // 用于放置生成的静态资源 (js、css、img、fonts) 的；（项目打包之后，静态资源会放在这个文件夹下）
@@ -30,7 +30,8 @@ module.exports = defineConfig({
         // target: `https://113.219.237.106:65519`, // 家里连接的环境
         // target: `http://172.19.32.55:9090`, // 浦新教育厅
         // target: `http://172.19.32.42:9090`, // 杨鹏飞教育厅 
-        target: `http://10.43.207.169:9090`, // 杨鹏飞教育厅 
+        // target: `http://10.43.207.169:9090`, // 杨鹏飞教育厅 
+        target: `http://192.168.0.200:9091`, // 杨鹏飞教育厅 
         // target: `https://basic.sc.smartedu.cn/hd/teacherTraining/api/`,
         changeOrigin: true,
         pathRewrite: {

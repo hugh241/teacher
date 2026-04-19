@@ -40,38 +40,38 @@ export default {
           title: "基本信息管理",
           activeName: "setInfo",
         },
+        // {
+        //   title: "提交任务要求管理",
+        //   activeName: "setSubmit",
+        // },
+        // {
+        //   title: "章节管理",
+        //   activeName: "setChapter",
+        // },
         {
-          title: "提交任务要求管理",
-          activeName: "setSubmit",
-        },
-        {
-          title: "章节管理",
-          activeName: "setChapter",
-        },
-        {
-          title: "试卷管理",
+          title: "测试题管理",
           activeName: "setTopic",
         },
-        {
-          title: "心得管理",
-          activeName: "setExperience",
-        },
-        {
-          title: "培训作业管理",
-          activeName: "homework",
-        },
-        {
-          title: "答题记录管理",
-          activeName: "answer",
-        },
-        {
-          title: "人员信息",
-          activeName: "people",
-        },
-        {
-          title: "证书设置",
-          activeName: "certificate",
-        },
+        // {
+        //   title: "心得管理",
+        //   activeName: "setExperience",
+        // },
+        // {
+        //   title: "培训作业管理",
+        //   activeName: "homework",
+        // },
+        // {
+        //   title: "答题记录管理",
+        //   activeName: "answer",
+        // },
+        // {
+        //   title: "人员信息",
+        //   activeName: "people",
+        // },
+        // {
+        //   title: "证书设置",
+        //   activeName: "certificate",
+        // },
       ],
     };
   },
@@ -107,7 +107,7 @@ export default {
             activeName: "setChapter",
           },
           {
-            title: "试卷管理",
+            title: "测试题管理",
             activeName: "setTopic",
           },
           {
@@ -146,7 +146,7 @@ export default {
               activeName: "setChapter",
             },
             {
-              title: "试卷管理",
+              title: "测试题管理",
               activeName: "setTopic",
             },
             {
@@ -182,7 +182,7 @@ export default {
               activeName: "setChapter",
             },
             {
-              title: "试卷管理",
+              title: "测试题管理",
               activeName: "setTopic",
             },
             {
@@ -215,7 +215,7 @@ export default {
               activeName: "setChapter",
             },
             {
-              title: "试卷管理",
+              title: "测试题管理",
               activeName: "setTopic",
             },
             {

@@ -11,7 +11,7 @@
     >
       <el-row>
         <el-col :span="24">
-          <el-form-item label="培训名称：" prop="courseName">
+          <el-form-item label="测试名称：" prop="courseName">
             <el-input
               v-model="ruleForm.courseName"
               autocomplete="off"
@@ -20,7 +20,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
+      <!-- <el-row>
         <el-col :span="24">
           <el-form-item label="学时/学分：" prop="creditRatio">
             <el-input
@@ -32,7 +32,7 @@
             ></el-input>
           </el-form-item>
         </el-col>
-      </el-row>
+      </el-row> -->
       <el-row>
         <el-col :span="24">
           <el-form-item label="培训简介：" prop="courseIntroduce">
@@ -65,7 +65,7 @@
           </el-form-item>
         </el-col>
       </el-row> -->
-      <el-row>
+      <!-- <el-row>
         <el-col :span="12">
           <el-form-item label="市州：" prop="province">
             <el-select
@@ -103,10 +103,10 @@
             </el-select>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+      </el-row> -->
+      <!-- <el-row>
         <el-col :span="12">
-          <!-- <el-form-item label="学段：" prop="tuition">
+          <el-form-item label="学段：" prop="tuition">
             <el-select
               v-model="ruleForm.tuition"
               placeholder="请选择学段"
@@ -120,7 +120,7 @@
                 :label="item.label"
               ></el-option>
             </el-select>
-          </el-form-item> -->
+          </el-form-item>
           <el-form-item label="分类:">
             <el-cascader
               v-model="categoryValue"
@@ -133,8 +133,8 @@
             ></el-cascader>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+      </el-row> -->
+      <!-- <el-row>
         <el-col :span="12">
           <el-form-item label="开始时间：" prop="startDate">
             <el-date-picker
@@ -174,8 +174,8 @@
             </el-date-picker>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+      </el-row> -->
+      <!-- <el-row>
         <el-col :span="24" class="bj_img">
           <el-form-item label="培训封面：" prop="fileId" style="display: flex">
             <p class="tishi">标准比例为16:9，推荐尺寸为310*174（像素）</p>
@@ -207,18 +207,18 @@
             </el-radio-group>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+      </el-row> -->
+      <!-- <el-row>
         <el-col :span="12">
-          <!-- <el-form-item label="是否按顺序进行视频学习:" prop="isStudy">
+          <el-form-item label="是否按顺序进行视频学习:" prop="isStudy">
             <el-radio-group v-model="ruleForm.isStudy">
               <el-radio label="1">是</el-radio>
               <el-radio label="0">否</el-radio>
             </el-radio-group>
-          </el-form-item> -->
+          </el-form-item>
         </el-col>
         <el-col :span="12">
-          <!-- <el-form-item label="课程级别:" prop="level">
+          <el-form-item label="课程级别:" prop="level">
             <el-select
               v-model="ruleForm.level"
               placeholder="请选择"
@@ -231,7 +231,7 @@
                 >省级</el-option
               >
             </el-select>
-          </el-form-item> -->
+          </el-form-item>
           <el-form-item
             label="首页宣传图："
             prop="coverId"
@@ -258,8 +258,8 @@
             </el-upload>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+      </el-row> -->
+      <!-- <el-row>
         <el-col :span="12">
           <el-form-item label="是否需要提交培训心得:" prop="isExperience">
             <el-radio-group
@@ -300,17 +300,14 @@
             </el-radio-group>
           </el-form-item>
         </el-col>
-      </el-row>
+      </el-row> -->
     </el-form>
 
     <div class="flex_R_C" style="padding: 30px 0">
-      <el-button v-if="!editTag" type="primary" @click="nextFun()"
-        >下一步</el-button
-      >
-      <el-button v-if="editTag" @click="$emit('returnData')">返回</el-button>
-      <el-button v-if="editTag" type="primary" @click="nextFun()"
-        >保存</el-button
-      >
+      <el-button v-if="courseId" type="primary" @click="nextFun()">保存</el-button>
+      <!-- <el-button v-if="!editTag" type="primary" @click="nextFun()">下一步</el-button> -->
+       <el-button v-if="!courseId" type="primary" @click="nextFun()">下一步</el-button>
+      <el-button v-if="courseId" @click="$emit('returnData')">返回</el-button>
     </div>
   </div>
 </template>
@@ -327,10 +324,12 @@ import {
 import editor from "@/views/train/components/publish/components/editor.vue";
 import { getCourseDetails } from "@/api/admin.js";
 export default {
-  props: ["editTag", "courseId", "detailInfo"],
+  // props: ["editTag", "courseId", "detailInfo"],
+  props: ["courseId", "detailInfo"],
   components: { editor },
   data() {
     return {
+      editTag: true,
       ruleForm: {
         courseName: "",
         creditRatio: 1,
@@ -396,7 +395,7 @@ export default {
       },
       rules: {
         courseName: [
-          { required: true, message: "请填写培训课程名称", trigger: "change" },
+          { required: true, message: "请填写测试课程名称", trigger: "change" },
           { max: 60, message: "最长不能超过60字", trigger: "change" },
         ],
         creditRatio: [
@@ -816,9 +815,12 @@ export default {
         tuition: this.ruleForm.tuition,
         categoryValue: this.categoryValue,
       });
-
+      // let res =
+      //   this.editTag || this.courseId
+      //     ? await updateStudyCourse(formData)
+      //     : await addStudyCourse(formData);
       let res =
-        this.editTag || this.courseId
+        this.courseId
           ? await updateStudyCourse(formData)
           : await addStudyCourse(formData);
       console.log(res, 2333);
@@ -828,9 +830,11 @@ export default {
             message: "修改成功",
             type: "success",
           });
-          this.$emit("returnData");
-        } else {
+          // this.$emit("returnData");
           this.$emit("nextFun", res.returnData.id);
+        } else {
+          // this.$emit("nextFun", res.returnData.id);
+          this.$emit("returnData");
         }
       }
     },

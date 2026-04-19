@@ -6,9 +6,9 @@
     </div>
     <div class="setInfo_body" v-if="!editTag">
       <el-descriptions direction="horizontal" :column="1" border :contentStyle="CS" :label-style="LS">
-        <el-descriptions-item label="培训名称">{{ detailInfo.courseName }}</el-descriptions-item>
+        <el-descriptions-item label="测试名称">{{ detailInfo.courseName }}</el-descriptions-item>
       </el-descriptions>
-      <el-descriptions direction="horizontal" :column="1" border :contentStyle="CS" :label-style="LS">
+      <!-- <el-descriptions direction="horizontal" :column="1" border :contentStyle="CS" :label-style="LS">
         <el-descriptions-item label="学时/学分">{{ detailInfo.creditRatio }}</el-descriptions-item>
       </el-descriptions>
       <el-descriptions direction="horizontal" :column="2" border :contentStyle="CS" :label-style="LS">
@@ -23,12 +23,12 @@
         <el-descriptions-item label="培训封面" v-if="detailInfo.studyFiles">
           <img :src="detailInfo.studyFiles.filePath || ''" alt="" style="width: 400px; height: 140px" />
         </el-descriptions-item>
-      </el-descriptions>
+      </el-descriptions> -->
       <!-- <el-descriptions direction="horizontal" :column="2" border :contentStyle="CS" :label-style="LS">
         <el-descriptions-item label="培训完成是否需要答题">{{ detailInfo.isHomework == '1' ? '是' : '否' }}</el-descriptions-item>
         <el-descriptions-item label="是否需要提交培训心得">{{ detailInfo.isExperience == '1' ? '是' : '否' }}</el-descriptions-item>
       </el-descriptions> -->
-      <el-descriptions direction="horizontal" v-if="detailInfo.isCover == '1'" :column="1" border :contentStyle="CS"
+      <!-- <el-descriptions direction="horizontal" v-if="detailInfo.isCover == '1'" :column="1" border :contentStyle="CS"
         :label-style="LS">
         <el-descriptions-item label="轮播图">
           <img :src="detailInfo.coverPath || ''" alt="" style="width: 800px; height: 140px" />
@@ -61,9 +61,9 @@
             '0'
             ? '是' : '否' }}</span>
         </el-descriptions-item>
-      </el-descriptions>
+      </el-descriptions> -->
       <el-descriptions direction="horizontal" :column="1" border :contentStyle="CS" :label-style="LS">
-        <el-descriptions-item label="培训介绍">
+        <el-descriptions-item label="测试结束">
           <div v-html="formatCourseIntroduce(detailInfo.courseIntroduce)"></div>
         </el-descriptions-item>
       </el-descriptions>
@@ -113,7 +113,7 @@ export default {
   computed: {},
   watch: {},
   methods: {
-    // 格式化培训介绍，处理图片尺寸
+    // 格式化测试结束，处理图片尺寸
     formatCourseIntroduce(content) {
       if (!content) return '';
       

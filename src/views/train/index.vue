@@ -1,4 +1,4 @@
-<!-- 培训管理 -->
+<!-- 测试管理 -->
 <template>
   <div class="train">
     <BreadCrumb :type="$route.path != '/list' ? true : false" />
